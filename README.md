@@ -27,7 +27,7 @@ datasets for Aspect-Based Sentiment Analysis and codes for reading them.
 ## [A Challenge Dataset and Effective Models for Aspect-Based Sentiment Analysis](https://www.aclweb.org/anthology/D19-1654/)
 1. MAMSACSA
 2. MAMSATSA
-##[nlpcc2012](http://tcci.ccf.org.cn/conference/2012/pages/page04_eva.html) 
+## [nlpcc2012](http://tcci.ccf.org.cn/conference/2012/pages/page04_eva.html) 
 nlpcc2012-weibo-sa
 
 ## Usage
