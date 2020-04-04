@@ -15,18 +15,18 @@ datasets for Aspect-Based Sentiment Analysis and codes for reading them.
 2. SemEval-2015-Task-12-REST
 3. SemEval-2015-Task-12-HOTEL
 ### [SemEval-2016 Task 5](http://alt.qcri.org/semeval2016/task5/)
-SemEval-2016-Task-5-CH-CAME-SB1
-SemEval-2016-Task-5-CH-PHNS-SB1
-SemEval-2016-Task-5-LAPT-SB1
-SemEval-2016-Task-5-LAPT-SB2
-SemEval-2016-Task-5-REST-SB1
-SemEval-2016-Task-5-REST-SB2
-### [bdci2019]
-[bdci2019-internet-news-sa](https://www.datafountain.cn/competitions/350)
-[bdci2019-financial-negative](https://www.datafountain.cn/competitions/353)
+1. SemEval-2016-Task-5-CH-CAME-SB1
+2. SemEval-2016-Task-5-CH-PHNS-SB1
+3. SemEval-2016-Task-5-LAPT-SB1
+4. SemEval-2016-Task-5-LAPT-SB2
+5. SemEval-2016-Task-5-REST-SB1
+6. SemEval-2016-Task-5-REST-SB2
+### bdci2019
+1. [bdci2019-internet-news-sa](https://www.datafountain.cn/competitions/350)
+2. [bdci2019-financial-negative](https://www.datafountain.cn/competitions/353)
 ## [A Challenge Dataset and Effective Models for Aspect-Based Sentiment Analysis](https://www.aclweb.org/anthology/D19-1654/)
-MAMSACSA
-MAMSATSA
+1. MAMSACSA
+2. MAMSATSA
 ##[nlpcc2012](http://tcci.ccf.org.cn/conference/2012/pages/page04_eva.html) 
 nlpcc2012-weibo-sa
 
@@ -47,3 +47,4 @@ Feel free to contribute!
 You can raise an issue or submit a pull request, whichever is more convenient for you.
 
 ## Licence
+MIT License
