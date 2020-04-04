@@ -483,90 +483,6 @@ class Semeval2014Task4Rest(Semeval2014Task4):
         return result, distinct_categories, distinct_polarities
 
 
-class SemEval141516LargeRest(BaseDataset):
-    """
-
-    """
-
-    def __init__(self, configuration: dict = None):
-        super().__init__(configuration)
-
-    def generate_acd_and_sc_data(self, dev_size=0.2):
-        rest14 = Semeval2014Task4Rest()
-        train_dev_test_data, distinct_categories, distinct_polarities = \
-            rest14.generate_acd_and_sc_data(dev_size=dev_size)
-        distinct_categories = set(distinct_categories)
-        distinct_polarities = set(distinct_polarities)
-
-        rest15 = Semeval2015Task12Rest()
-        rest15_train_dev_test_data, rest15_distinct_categories, rest15_distinct_polarities = \
-            rest15.generate_acd_and_sc_data(dev_size=dev_size)
-
-        rest16 = Semeval2016Task5RestSub1()
-        rest16_train_dev_test_data, rest16_distinct_categories, rest16_distinct_polarities = \
-            rest16.generate_acd_and_sc_data(dev_size=dev_size)
-
-        rest1516_train_dev_test_data = {
-            'train': rest15_train_dev_test_data['train'],
-            'dev': rest15_train_dev_test_data['dev'],
-            'test': rest15_train_dev_test_data['test'] + rest16_train_dev_test_data['test']
-        }
-
-        category_mapping = {
-            'AMBIENCE#GENERAL': 'ambience',
-            'DRINKS#PRICES': 'price',
-            'DRINKS#QUALITY': 'drinks',
-            'DRINKS#STYLE_OPTIONS': 'drinks',
-            'FOOD#GENERAL': 'food',
-            'FOOD#PRICES': 'price',
-            'FOOD#QUALITY': 'food',
-            'FOOD#STYLE_OPTIONS': 'food',
-            'LOCATION#GENERAL': 'location',
-            'RESTAURANT#GENERAL': 'restaurant',
-            'RESTAURANT#MISCELLANEOUS': 'anecdotes/miscellaneous',
-            'RESTAURANT#PRICES': 'price',
-            'SERVICE#GENERAL': 'service'
-        }
-        for data_type, data in rest1516_train_dev_test_data.items():
-            for sample in data:
-                sentence = sample[0]
-                labels = sample[1]
-                if len(labels) == 0:
-                    continue
-                label_news = []
-                aspect_categories_temp = {}
-                for category, polarity in labels:
-                    category = category_mapping[category]
-                    if category not in aspect_categories_temp:
-                        aspect_categories_temp[category] = set()
-                    aspect_categories_temp[category].add(polarity)
-                for category, polarities in aspect_categories_temp.items():
-                    if len(polarities) == 1:
-                        label_news.append((category, polarities.pop()))
-                        distinct_categories.add(category)
-                        distinct_polarities.add(polarity)
-                    else:
-                        if ('positive' in polarities and 'negative' in polarities) or 'conflict' in polarities:
-                            label_news.append((category, 'conflict'))
-                            distinct_categories.add(category)
-                            distinct_polarities.add('conflict')
-                        elif 'positive' in polarities and 'neutral' in polarities:
-                            label_news.append((category, 'positive'))
-                            distinct_categories.add(category)
-                            distinct_polarities.add('positive')
-                        else:
-                            label_news.append((category, 'negative'))
-                            distinct_categories.add(category)
-                            distinct_polarities.add('negative')
-                train_dev_test_data[data_type].append([sentence, label_news])
-
-        distinct_categories = list(distinct_categories)
-        distinct_categories.sort()
-        distinct_polarities = list(distinct_polarities)
-        distinct_polarities.sort()
-        return train_dev_test_data, distinct_categories, distinct_polarities
-
-
 class MAMSATSA(Semeval2014Task4):
     """
     2019-emnlp-A_Challenge_Dataset_and_Effective_Models_for_Aspect_Based_Sentiment_Analysis
@@ -1406,9 +1322,3 @@ def get_dataset_class_by_name(dataset_name):
     :return:
     """
     return suported_dataset_names_and_data_loader[dataset_name]
-
-
-if __name__ == '__main__':
-    dataset_name = 'SemEval-2014-Task-4-REST'
-    dataset = get_dataset_class_by_name(dataset_name)()
-    print('')
