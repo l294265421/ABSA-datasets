@@ -1297,7 +1297,6 @@ class Bdci2019FinancialNegative(BaseDataset):
 suported_dataset_names_and_data_loader = {
     'SemEval-2014-Task-4-LAPT': Semeval2014Task4Lapt,
     'SemEval-2014-Task-4-REST': Semeval2014Task4Rest,
-    'SemEval-141516-LARGE-REST': SemEval141516LargeRest,
     'SemEval-2015-Task-12-LAPT': Semeval2015Task12Lapt,
     'SemEval-2015-Task-12-REST': Semeval2015Task12Rest,
     'SemEval-2015-Task-12-HOTEL': Semeval2015Task12Hotel,
